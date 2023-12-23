@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:18:10 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/18 03:44:58 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/24 00:04:09 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,25 +56,34 @@ int	get_width(char *map_file)
 	fd = open(map_file, O_RDONLY, 0);
 	line = get_next_line(fd);
 	width = word_counter(line, ' ');
-	//free(line);
-		close(fd);
+	free(line);
+	while (get_next_line(fd))
+		get_next_line(fd);
+	close(fd);
 	return (width);
 }
 
-void	make_map_line(int *z_y, char *line)
+void	make_map_line(int *z_y, char *line, t_map *map, int x)
 {
 	char	**z;
 	int		i;
 
 	z = ft_split(line, ' ');
 	i = 0;
+	if (!z_y)
+	{
+		z_y = (int *)malloc(sizeof(int) * (map->width + 1));
+		if (!z_y)
+			return ;
+		map->z_values[x] = z_y;
+	}
 	while (z[i])
 	{
 		z_y[i] = ft_atoi(z[i]);
-		//free (z[i]);
+		free (z[i]);
 		i++;
 	}
-	//free (z);
+	free (z);
 }
 
 void	read_map(char *map_file, t_map *map)
@@ -82,7 +91,8 @@ void	read_map(char *map_file, t_map *map)
 	int		i;
 	char	*line;
 	int		fd;
-
+	
+	line = NULL;
 	map->height = get_height(map_file);
 	map->width = get_width(map_file);
 	map->z_values = (int **)malloc(sizeof(int) * (map->height + 1));
@@ -102,8 +112,8 @@ void	read_map(char *map_file, t_map *map)
 	{
 		line = get_next_line(fd);
 		if (line)
-			make_map_line(map->z_values[i], line);
-		//free (line);
+			make_map_line(map->z_values[i], line, map, i);
+		free (line);
 		i++;
 	}
 	close(fd);

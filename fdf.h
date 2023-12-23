@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:00:19 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/18 02:52:00 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/23 22:06:30 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ typedef struct s_map
 }			t_map;
 
 void	read_map(char *map_file, t_map *map);
+char	*get_next_line(int fd);
+int		ft_atoi(const char *str);
 
 #endif

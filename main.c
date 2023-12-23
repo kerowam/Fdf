@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 02:40:48 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/18 03:12:12 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/24 00:07:28 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ int	main(int argc, char **argv)
 		j = 0;
 		while (j < map->width)
 		{
-			printf("%d ", map->z_values[i][j]);
+			printf("%3d ", map->z_values[i][j]);
 			j++;
 		}
+		printf("\n");
 		i++;
 	}
 }
