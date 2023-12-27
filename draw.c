@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 22:50:08 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/27 23:25:27 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/27 23:43:29 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ float	select_abs_max(float a, float b)
 		return (b);
 }
 
-void	third_dimension(float *x, float *y, int z)
+void	isometric_proyection(float *x, float *y, int z)
 {
 	*x = (*x - *y) * cos(0.8);
 	*y = (*x + *y) * sin(0.8) - z;
@@ -50,8 +50,8 @@ void	draw_line(float x, float y, float x1, float y1, t_map *map)
 		map->color = 0xe80c0c;
 	else
 		map->color = 0xffffff;
-	third_dimension(&x, &y, z);
-	third_dimension(&x1, &y1, z1);
+	isometric_proyection(&x, &y, z);
+	isometric_proyection(&x1, &y1, z1);
 	x += 150;
 	y += 150;
 	x1 += 150;
