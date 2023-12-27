@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:18:10 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/27 03:16:07 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/27 04:28:01 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ void	make_map_line(int *z_y, char *line, t_map *map, int x)
 	}*/
 	while (z[i])
 	{
-		z_y[i] = ft_atoi(z[i]);
+		if (i < map->width)
+		{
+			z_y[i] = ft_atoi(z[i]);
+		}
 		free (z[i]);
 		i++;
 	}
@@ -95,11 +98,11 @@ void	read_map(char *map_file, t_map *map)
 	line = NULL;
 	map->height = get_height(map_file);
 	map->width = get_width(map_file);
-	map->z_values = (int **)malloc(sizeof(int) * (map->height));
+	map->z_values = (int **)malloc(sizeof(int *) * (map->height + 1));
 	if (!(map->z_values))
 		return ;
 	i = 0;
-	while (i < map->height)
+	while (i <= map->height)
 	{
 		map->z_values[i] = (int *)malloc(sizeof(int) * (map->width + 1));
 		if (!(map->z_values[i]))
@@ -108,7 +111,7 @@ void	read_map(char *map_file, t_map *map)
 	}
 	i = 0;
 	fd = open(map_file, O_RDONLY, 0);
-	while (i <= map->height)
+	while (i < map->height)
 	{
 		line = get_next_line(fd);
 		if (line)
