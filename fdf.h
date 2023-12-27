@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:00:19 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/23 22:06:30 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/27 20:41:08 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 # define FDF_H
 
 # include "libft/libft.h"
+# include "minilibx-linux/mlx.h"
+# include "minilibx-linux/mlx_int.h"
 # include <fcntl.h>
 
 typedef struct s_map
 {
-	int	width;
-	int	height;
-	int	**z_values;
+	int		width;
+	int		height;
+	int		**z_values;
+	void	*mlx_ptr;
+	void	*window_ptr;
 }			t_map;
 
 void	read_map(char *map_file, t_map *map);
-char	*get_next_line(int fd);
-int		ft_atoi(const char *str);
+void	draw_line(float x, float y, float x1, float y1, t_map *map);
 
 #endif

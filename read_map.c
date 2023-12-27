@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:18:10 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/27 04:28:01 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:55:16 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	read_map(char *map_file, t_map *map)
 	int		i;
 	char	*line;
 	int		fd;
-	
+
 	line = NULL;
 	map->height = get_height(map_file);
 	map->width = get_width(map_file);
