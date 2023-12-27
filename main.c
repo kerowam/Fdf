@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 02:40:48 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/27 20:40:31 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/27 21:26:12 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	main(int argc, char **argv)
 	read_map(argv[1], map);
 	map->mlx_ptr = mlx_init();
 	map->window_ptr = mlx_new_window(map->mlx_ptr, 1000, 1000, "FDF");
-	draw_line(10, 10, 600, 300, map);
+	map->zoom = 20;
+	draw_sequence(map);
 	mlx_key_hook(map->window_ptr, deal_key, NULL);
 	mlx_loop(map->mlx_ptr);
 }
