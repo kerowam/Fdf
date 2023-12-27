@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:18:10 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/24 00:04:09 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/27 03:16:07 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ void	make_map_line(int *z_y, char *line, t_map *map, int x)
 
 	z = ft_split(line, ' ');
 	i = 0;
-	if (!z_y)
+	/*if (!z_y)
 	{
 		z_y = (int *)malloc(sizeof(int) * (map->width + 1));
 		if (!z_y)
 			return ;
 		map->z_values[x] = z_y;
-	}
+	}*/
 	while (z[i])
 	{
 		z_y[i] = ft_atoi(z[i]);
@@ -95,11 +95,11 @@ void	read_map(char *map_file, t_map *map)
 	line = NULL;
 	map->height = get_height(map_file);
 	map->width = get_width(map_file);
-	map->z_values = (int **)malloc(sizeof(int) * (map->height + 1));
+	map->z_values = (int **)malloc(sizeof(int) * (map->height));
 	if (!(map->z_values))
 		return ;
 	i = 0;
-	while (i <= map->height)
+	while (i < map->height)
 	{
 		map->z_values[i] = (int *)malloc(sizeof(int) * (map->width + 1));
 		if (!(map->z_values[i]))
