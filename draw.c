@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 22:50:08 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/28 20:38:06 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/28 22:30:38 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,21 @@ void	draw_line(float x, float y, float x1, float y1, t_map *map)
 	int		max_dist;
 	int		z;
 	int		z1;
+	int		color;
 
 	z = map->z_values[(int)y][(int)x];
 	z1 = map->z_values[(int)y1][(int)x1];
+	color = 0x01 * map->z_color[(int)y][(int)x];
 	x *= map->zoom;
 	y *= map->zoom;
 	x1 *= map->zoom;
 	y1 *= map->zoom;
-	if (z > 0 || z1 > 0)
+	/*if (z > 0 || z1 > 0)
 		map->color = 0x56ca1f;
 	else if (z == 0 || z1 == 0)
 		map->color = 0xffffff;
 	else if (z < 0 || z1 < 0)
-		map->color = 0x2424e7;
+		map->color = 0x2424e7;*/
 	z += map->zoom;
 	z1 += map->zoom;
 	isometric_proyection(&x, &y, z);
@@ -67,7 +69,7 @@ void	draw_line(float x, float y, float x1, float y1, t_map *map)
 	y_dist /= max_dist;
 	while ((int)(x - x1) || (int)(y - y1))
 	{
-		mlx_pixel_put(map->mlx_ptr, map->window_ptr, x, y, map->color);
+		mlx_pixel_put(map->mlx_ptr, map->window_ptr, x, y, color);
 		x += x_dist;
 		y += y_dist;
 	}

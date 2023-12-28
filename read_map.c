@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:18:10 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/27 17:55:16 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/28 22:07:46 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,28 @@ int	get_width(char *map_file)
 	return (width);
 }
 
-void	make_map_line(int *z_y, char *line, t_map *map, int x)
+void	set_color(t_map *map, char **z, int x, int y)
+{
+	if (ft_strchr(*z, ','))
+		map->z_color[y][x] = ft_atoi_base(ft_strchr(*z, ','), 16);
+	else
+	{
+		if (ft_atoi(*z) > 0)
+			map->z_color[y][x] = 0x56ca1f;
+		else if (ft_atoi(*z) == 0)
+			map->z_color[y][x] = 0xffffff;
+		else if (ft_atoi(*z) < 0)
+			map->z_color[y][x] = 0x2424e7;
+	}
+}
+
+void	make_map_line(int *z_y, char *line, t_map *map, int y)
 {
 	char	**z;
-	int		i;
+	int		x;
 
 	z = ft_split(line, ' ');
-	i = 0;
+	x = 0;
 	/*if (!z_y)
 	{
 		z_y = (int *)malloc(sizeof(int) * (map->width + 1));
@@ -77,14 +92,15 @@ void	make_map_line(int *z_y, char *line, t_map *map, int x)
 			return ;
 		map->z_values[x] = z_y;
 	}*/
-	while (z[i])
+	while (z[x])
 	{
-		if (i < map->width)
+		if (x < map->width)
 		{
-			z_y[i] = ft_atoi(z[i]);
+			z_y[x] = ft_atoi(z[x]);
+			set_color(map, &z[x], x, y);
 		}
-		free (z[i]);
-		i++;
+		free (z[x]);
+		x++;
 	}
 	free (z);
 }
@@ -99,13 +115,15 @@ void	read_map(char *map_file, t_map *map)
 	map->height = get_height(map_file);
 	map->width = get_width(map_file);
 	map->z_values = (int **)malloc(sizeof(int *) * (map->height + 1));
-	if (!(map->z_values))
+	map->z_color = (int **)malloc(sizeof(int *) * (map->height + 1));
+	if (!(map->z_values) || !(map->z_color))
 		return ;
 	i = 0;
 	while (i <= map->height)
 	{
 		map->z_values[i] = (int *)malloc(sizeof(int) * (map->width + 1));
-		if (!(map->z_values[i]))
+		map->z_color[i] = (int *)malloc(sizeof(int) * (map->width + 1));
+		if (!(map->z_values[i]) || !(map->z_color[i]))
 			return ;
 		i++;
 	}
@@ -121,4 +139,5 @@ void	read_map(char *map_file, t_map *map)
 	}
 	close(fd);
 	map->z_values[i] = NULL;
+	map->z_color[i] = NULL;
 }
