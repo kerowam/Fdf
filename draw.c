@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 22:50:08 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/27 23:43:29 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/28 20:38:06 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ float	select_abs_max(float a, float b)
 
 void	isometric_proyection(float *x, float *y, int z)
 {
-	*x = (*x - *y) * cos(0.8);
-	*y = (*x + *y) * sin(0.8) - z;
+	*x = (*x - *y) * cos(0.7);
+	*y = (*x + *y) * sin(0.7) - z;
 }
 
 void	draw_line(float x, float y, float x1, float y1, t_map *map)
@@ -47,15 +47,19 @@ void	draw_line(float x, float y, float x1, float y1, t_map *map)
 	x1 *= map->zoom;
 	y1 *= map->zoom;
 	if (z > 0 || z1 > 0)
-		map->color = 0xe80c0c;
-	else
+		map->color = 0x56ca1f;
+	else if (z == 0 || z1 == 0)
 		map->color = 0xffffff;
+	else if (z < 0 || z1 < 0)
+		map->color = 0x2424e7;
+	z += map->zoom;
+	z1 += map->zoom;
 	isometric_proyection(&x, &y, z);
 	isometric_proyection(&x1, &y1, z1);
-	x += 150;
-	y += 150;
-	x1 += 150;
-	y1 += 150;
+	x += map->x_move;
+	y += map->y_move;
+	x1 += map->x_move;
+	y1 += map->y_move;
 	x_dist = x1 - x;
 	y_dist = y1 - y;
 	max_dist = select_abs_max(x_dist, y_dist);
