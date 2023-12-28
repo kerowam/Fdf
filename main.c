@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 02:40:48 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/28 22:54:26 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/29 00:17:02 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,19 @@ int	loop_hook(int key, void *param)
 int	main(int argc, char **argv)
 {
 	t_map	*map;
+	int		fd;
 
 	map = (t_map *)malloc(sizeof(t_map));
+	if (argc != 2)
+	{
+		ft_putstr_fd("Error: The program only admit one argument, and it must be the path of the map file to open.\n", 1);
+		return (1);
+	}
+	if (fd = open(argv[1], O_RDONLY, 0) <= 0)
+	{
+		ft_putstr_fd("Error: problem opening the file. Check if the paht or the file name is correct!\n", 1);
+		return (2);
+	}
 	read_map(argv[1], map);
 	map->mlx_ptr = mlx_init();
 	map->window_ptr = mlx_new_window(map->mlx_ptr, 1000, 1000, "FDF");
