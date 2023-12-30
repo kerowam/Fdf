@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 22:14:01 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/23 21:59:30 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/30 01:01:58 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ char *ft_reader(int fd, char *stack)
 		else
 			stack = ft_strjoin_gnl(stack, buffer);
 	}
-	//free(buffer);
+	free(buffer);
 	return (stack);
 }
 

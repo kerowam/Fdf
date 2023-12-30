@@ -6,14 +6,36 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 02:40:48 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/29 00:17:02 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/30 01:35:49 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	close_window(void *param)
+int	close_window(void *param, t_map *map)
 {
+	int	y;
+
+
+	y = 0;
+	while (y < map->height)
+	{
+		free(map->z_values[y]);
+		free(map->z_color[y]);
+		map->z_values[y] == NULL;
+		map->z_values[y] == NULL;
+		y++;
+	}
+	free(map->z_values);
+	map->z_values = NULL;
+	free(map->z_color);
+	map->z_color = NULL;
+	free(map->mlx_ptr);
+	map->mlx_ptr = NULL;
+	free(map->window_ptr);
+	map->window_ptr = NULL;
+	free(map);
+	map = NULL;
 	(void)param;
 	exit (0);
 }
@@ -46,7 +68,7 @@ int	key_hook(int key, t_map *map, void *param)
 		draw_sequence(map);
 	}
 	else if (key == 65307)
-		close_window(param);
+		close_window(param, map);
 	return (0);
 }
 

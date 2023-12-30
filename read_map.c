@@ -6,21 +6,32 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:18:10 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/29 00:19:04 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/30 01:35:54 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	get_height(char *map_file)
+int	get_height(char *map_file, t_map *map)
 {
 	int	height;
 	int	fd;
 
 	fd = open(map_file, O_RDONLY, 0);
 	height = 0;
-	while (get_next_line(fd))
+	while (1)
+	{
+		map->line = get_next_line(fd);
+		if (height == 0 && map->line == NULL)
+		{
+			ft_putstr_fd("Can't open file. Something is wrong!\n", 1);
+			exit(EXIT_FAILURE);
+		}
+		if (map->line == NULL)
+			break ;
 		height++;
+		free(map->line);
+	}
 	close (fd);
 	return (height);
 }
@@ -57,8 +68,8 @@ int	get_width(char *map_file)
 	line = get_next_line(fd);
 	width = word_counter(line, ' ');
 	free(line);
-	while (get_next_line(fd))
-		get_next_line(fd);
+	/*while (get_next_line(fd))
+		get_next_line(fd);*/
 	close(fd);
 	return (width);
 }
@@ -112,17 +123,17 @@ void	read_map(char *map_file, t_map *map)
 	int		fd;
 
 	line = NULL;
-	map->height = get_height(map_file);
+	map->height = get_height(map_file, map);
 	map->width = get_width(map_file);
-	map->z_values = (int **)malloc(sizeof(int *) * (map->height + 1));
-	map->z_color = (int **)malloc(sizeof(int *) * (map->height + 1));
+	map->z_values = (int **)malloc(sizeof(int *) * (map->height));
+	map->z_color = (int **)malloc(sizeof(int *) * (map->height));
 	if (!(map->z_values) || !(map->z_color))
 		return ;
 	i = 0;
-	while (i <= map->height)
+	while (i < map->height)
 	{
-		map->z_values[i] = (int *)malloc(sizeof(int) * (map->width + 1));
-		map->z_color[i] = (int *)malloc(sizeof(int) * (map->width + 1));
+		map->z_values[i] = (int *)malloc(sizeof(int) * (map->width));
+		map->z_color[i] = (int *)malloc(sizeof(int) * (map->width));
 		if (!(map->z_values[i]) || !(map->z_color[i]))
 			return ;
 		i++;
@@ -138,6 +149,6 @@ void	read_map(char *map_file, t_map *map)
 		i++;
 	}
 	close(fd);
-	map->z_values[i] = NULL;
-	map->z_color[i] = NULL;
+	//map->z_values[i] = NULL;
+	//map->z_color[i] = NULL;
 }

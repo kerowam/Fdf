@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:00:19 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/28 22:02:06 by gfredes-         ###   ########.fr       */
+/*   Updated: 2023/12/30 01:04:10 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_map
 	int		zoom;
 	int		x_move;
 	int		y_move;
+	char	*line;
 }			t_map;
 
 void	read_map(char *map_file, t_map *map);
