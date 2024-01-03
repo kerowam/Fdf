@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 22:50:08 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/30 00:01:05 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/03 22:46:23 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,46 +32,43 @@ void	isometric_proyection(float *x, float *y, int z)
 	*y = (*x + *y) * sin(0.7) - z;
 }
 
-void	draw_line(float x, float y, float x1, float y1, t_map *map)
+void	do_zoom(t_map *map)
+{
+	map->zoom = 20;
+	map->x *= map->zoom;
+	map->y *= map->zoom;
+	map->x1 *= map->zoom;
+	map->y1 *= map->zoom;
+	map->z += map->zoom;
+	map->z1 += map->zoom;
+}
+
+void	draw_line(float x, float y, t_map *map)
 {
 	float	x_dist;
 	float	y_dist;
 	int		max_dist;
-	int		z;
-	int		z1;
 	int		color;
 
-	z = map->z_values[(int)y][(int)x];
-	z1 = map->z_values[(int)y1][(int)x1];
+	set_z_z1(map, x, y);
 	color = 0x01 * map->z_color[(int)y][(int)x];
-	x *= map->zoom;
-	y *= map->zoom;
-	x1 *= map->zoom;
-	y1 *= map->zoom;
-	/*if (z > 0 || z1 > 0)
-		map->color = 0x56ca1f;
-	else if (z == 0 || z1 == 0)
-		map->color = 0xffffff;
-	else if (z < 0 || z1 < 0)
-		map->color = 0x2424e7;*/
-	z += map->zoom;
-	z1 += map->zoom;
-	isometric_proyection(&x, &y, z);
-	isometric_proyection(&x1, &y1, z1);
-	x += map->x_move;
-	y += map->y_move;
-	x1 += map->x_move;
-	y1 += map->y_move;
-	x_dist = x1 - x;
-	y_dist = y1 - y;
+	do_zoom(map);
+	isometric_proyection(&map->x, &map->y, map->z);
+	isometric_proyection(&map->x1, &map->y1, map->z1);
+	map->x += map->x_move;
+	map->y += map->y_move;
+	map->x1 += map->x_move;
+	map->y1 += map->y_move;
+	x_dist = map->x1 - map->x;
+	y_dist = map->y1 - map->y;
 	max_dist = select_abs_max(x_dist, y_dist);
 	x_dist /= max_dist;
 	y_dist /= max_dist;
-	while ((int)(x - x1) || (int)(y - y1))
+	while ((int)(map->x - map->x1) || (int)(map->y - map->y1))
 	{
-		mlx_pixel_put(map->mlx_ptr, map->window_ptr, x, y, color);
-		x += x_dist;
-		y += y_dist;
+		mlx_pixel_put(map->mlx_ptr, map->window_ptr, map->x, map->y, color);
+		map->x += x_dist;
+		map->y += y_dist;
 	}
 }
 
@@ -86,10 +83,18 @@ void	draw_sequence(t_map	*map)
 		x = 0;
 		while (x < map->width)
 		{
+			set_x_y(x, y, map);
 			if (x < map->width - 1)
-				draw_line(x, y, x + 1, y, map);
+			{
+				set_x1_y1(x + 1, y, map);
+				draw_line(x, y, map);
+			}
 			if (y < map->height - 1)
-				draw_line(x, y, x, y + 1, map);
+			{
+				set_x_y(x, y, map);
+				set_x1_y1(x, y + 1, map);
+				draw_line(x, y, map);
+			}
 			x++;
 		}
 		y++;

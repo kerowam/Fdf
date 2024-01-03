@@ -6,78 +6,19 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:18:10 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/30 01:35:54 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/03 23:01:34 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	get_height(char *map_file, t_map *map)
-{
-	int	height;
-	int	fd;
-
-	fd = open(map_file, O_RDONLY, 0);
-	height = 0;
-	while (1)
-	{
-		map->line = get_next_line(fd);
-		if (height == 0 && map->line == NULL)
-		{
-			ft_putstr_fd("Can't open file. Something is wrong!\n", 1);
-			exit(EXIT_FAILURE);
-		}
-		if (map->line == NULL)
-			break ;
-		height++;
-		free(map->line);
-	}
-	close (fd);
-	return (height);
-}
-
-int	word_counter(char *line, char c)
-{
-	int	i;
-	int	counter;
-
-	i = 0;
-	counter = 0;
-	if (line[0] != c)
-		counter++;
-	i++;
-	while (line[i])
-	{
-		if (line[i] == c && line[i + 1] != c && line[i + 1] != '\n'
-				&& line[i + 1] != '\0')
-		{
-			counter++;
-		}
-		i++;
-	}
-	return (counter);
-}
-
-int	get_width(char *map_file)
-{
-	int		width;
-	int		fd;
-	char	*line;
-
-	fd = open(map_file, O_RDONLY, 0);
-	line = get_next_line(fd);
-	width = word_counter(line, ' ');
-	free(line);
-	/*while (get_next_line(fd))
-		get_next_line(fd);*/
-	close(fd);
-	return (width);
-}
-
 void	set_color(t_map *map, char **z, int x, int y)
 {
-	if (ft_strchr(*z, ','))
-		map->z_color[y][x] = ft_atoi_base(ft_strchr(*z, ','), 16);
+	char	*z_pnt;
+
+	z_pnt = *z;
+	if (ft_strchr(z_pnt, ','))
+		map->z_color[y][x] = ft_atoi_base(ft_strchr(z_pnt, ','), 16);
 	else
 	{
 		if (ft_atoi(*z) > 0)
@@ -96,13 +37,7 @@ void	make_map_line(int *z_y, char *line, t_map *map, int y)
 
 	z = ft_split(line, ' ');
 	x = 0;
-	/*if (!z_y)
-	{
-		z_y = (int *)malloc(sizeof(int) * (map->width + 1));
-		if (!z_y)
-			return ;
-		map->z_values[x] = z_y;
-	}*/
+
 	while (z[x])
 	{
 		if (x < map->width)
@@ -116,6 +51,26 @@ void	make_map_line(int *z_y, char *line, t_map *map, int y)
 	free (z);
 }
 
+void	init_z(t_map *map)
+{
+	int	i;
+
+	i = 0;
+
+	map->z_values = (int **)malloc(sizeof(int *) * (map->height));
+	map->z_color = (int **)malloc(sizeof(int *) * (map->height));
+	if (!(map->z_values) || !(map->z_color))
+		return ;
+	while (i < map->height)
+	{
+		map->z_values[i] = (int *)malloc(sizeof(int) * (map->width));
+		map->z_color[i] = (int *)malloc(sizeof(int) * (map->width));
+		if (!(map->z_values[i]) || !(map->z_color[i]))
+			return ;
+		i++;
+	}
+}
+
 void	read_map(char *map_file, t_map *map)
 {
 	int		i;
@@ -125,19 +80,7 @@ void	read_map(char *map_file, t_map *map)
 	line = NULL;
 	map->height = get_height(map_file, map);
 	map->width = get_width(map_file);
-	map->z_values = (int **)malloc(sizeof(int *) * (map->height));
-	map->z_color = (int **)malloc(sizeof(int *) * (map->height));
-	if (!(map->z_values) || !(map->z_color))
-		return ;
-	i = 0;
-	while (i < map->height)
-	{
-		map->z_values[i] = (int *)malloc(sizeof(int) * (map->width));
-		map->z_color[i] = (int *)malloc(sizeof(int) * (map->width));
-		if (!(map->z_values[i]) || !(map->z_color[i]))
-			return ;
-		i++;
-	}
+	init_z(map);
 	i = 0;
 	fd = open(map_file, O_RDONLY, 0);
 	while (i < map->height)
@@ -149,6 +92,4 @@ void	read_map(char *map_file, t_map *map)
 		i++;
 	}
 	close(fd);
-	//map->z_values[i] = NULL;
-	//map->z_color[i] = NULL;
 }
