@@ -6,13 +6,13 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 02:40:48 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/03 23:04:32 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/03 23:46:32 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	close_window(void *param, t_map *map)
+int	close_window(void *param)
 {
 	/*int	y;
 
@@ -45,7 +45,7 @@ int	key_hook(int key, t_map *map, void *param)
 	//printf("%d\n", key); //AÑADIR MI FT_PRINTF A LIBFT Y UTILIZARLA AQUI!!!!???
 	
 	if (key == 65307)
-		close_window(param, map);
+		close_window(param);
 	else
 	{
 		if (key == 65362)
@@ -64,13 +64,13 @@ int	key_hook(int key, t_map *map, void *param)
 }
 
 
-int	loop_hook(int key, void *param)
+/*int	loop_hook(int key, void *param)
 {
-	t_map	*map;
+	//t_map	*map;
 
-	map = (t_map *)param;
+	(void)param;
 	return (0);
-}
+}*/
 
 
 int	main(int argc, char **argv)
@@ -97,7 +97,7 @@ int	main(int argc, char **argv)
 	mlx_key_hook(map->window_ptr, key_hook, map);
 	mlx_hook(map->window_ptr, 17, 1L << 17, close_window, map);
 	mlx_hook(map->window_ptr, 2, 0, close_window, map);
-	mlx_loop_hook(map->mlx_ptr, loop_hook, map);
+	//mlx_loop_hook(map->mlx_ptr, loop_hook, map);
 	mlx_loop(map->mlx_ptr);
 	return (0);
 }
