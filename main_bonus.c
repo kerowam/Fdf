@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 02:13:14 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 03:33:46 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:23:50 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	close_window(void *param)
 
 int	key_hook(int key, t_map *map, void *param)
 {
-	printf("%d\n", key); //AÑADIR MI FT_PRINTF A LIBFT Y UTILIZARLA AQUI!!!!???
+	//printf("%d\n", key); //AÑADIR MI FT_PRINTF A LIBFT Y UTILIZARLA AQUI!!!!???
 
 	if (key == 65307)
 		close_window(param);
@@ -64,17 +64,24 @@ int	key_hook(int key, t_map *map, void *param)
 				map->zoom -= 10;
 		}
 		else if (key == 119)
-			map->angle_x += 0.2;
-		else if (key == 115)
-			map->angle_x -= 0.2;
-		else if (key == 97)
-			map->angle_y += 0.2;
-		else if (key == 100)
 			map->angle_y -= 0.2;
+		else if (key == 115)
+			map->angle_y += 0.2;
+		else if (key == 97)
+			map->angle_x += 0.2;
+		else if (key == 100)
+			map->angle_x -= 0.2;
 		else if (key == 122)
 			map->z_mod -= 1;
 		else if (key == 120)
 			map->z_mod += 1;
+		else if (key == 112)
+		{
+			if (map->projection == 0)
+				map->projection = 1;
+			else
+				map->projection = 0;
+		}
 		mlx_clear_window(map->mlx_ptr, map->window_ptr);
 		draw_sequence(map);
 
@@ -99,6 +106,7 @@ void	set_parameters(t_map *map)
 	map->angle_x = 1;
 	map->angle_y = 1;
 	map->z_mod = 1;
+	map->projection = 0;
 }
 
 int	main(int argc, char **argv)

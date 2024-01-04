@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:00:19 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 03:22:20 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:15:46 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_map
 	float	angle_x;
 	float	angle_y;
 	int		z_mod;
+	int		projection;
 }			t_map;
 
 int		get_height(char *map_file, t_map *map);
@@ -53,5 +54,8 @@ int		ft_atoi_base(const char *str, int str_base);
 void	set_z_z1(t_map *map, float x, float y);
 void	set_x1_y1(int x1, int y1, t_map *map);
 void	set_x_y(int x, int y, t_map *map);
+void	isometric_projection(float *x, float *y, int z, t_map *map);
+void	cavalier_projection(float *x, float *y, int z, t_map *map);
+void	select_projection(t_map	*map);
 
 #endif

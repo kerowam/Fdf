@@ -6,7 +6,7 @@
 #    By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 23:20:55 by gfredes-          #+#    #+#              #
-#    Updated: 2024/01/04 02:23:11 by gfredes-         ###   ########.fr        #
+#    Updated: 2024/01/04 17:13:19 by gfredes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_BONUS =	read_map_bonus.c \
 			draw_bonus.c \
 			draw_utils_bonus.c \
 			main_bonus.c \
+			projections_bonus.c \
 			ft_atoi_base.c
 
 CC = gcc

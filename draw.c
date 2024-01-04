@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 22:50:08 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 02:12:16 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:53:32 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ float	select_abs_max(float a, float b)
 		return (b);
 }
 
-void	isometric_proyection(float *x, float *y, int z)
+void	isometric_projection(float *x, float *y, int z)
 {
 	*x = (*x - *y) * cos(0.7);
 	*y = (*x + *y) * sin(0.7) - z;
@@ -51,8 +51,8 @@ void	draw_line(float x, float y, t_map *map)
 	set_z_z1(map, x, y);
 	color = 0x01 * map->z_color[(int)y][(int)x];
 	do_zoom(map);
-	isometric_proyection(&map->x, &map->y, map->z);
-	isometric_proyection(&map->x1, &map->y1, map->z1);
+	isometric_projection(&map->x, &map->y, map->z);
+	isometric_projection(&map->x1, &map->y1, map->z1);
 	map->x += map->x_move;
 	map->y += map->y_move;
 	map->x1 += map->x_move;
