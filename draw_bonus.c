@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 02:12:00 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 02:12:21 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 02:46:39 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	isometric_proyection(float *x, float *y, int z)
 
 void	do_zoom(t_map *map)
 {
-	map->zoom = 20;
 	map->x *= map->zoom;
 	map->y *= map->zoom;
 	map->x1 *= map->zoom;

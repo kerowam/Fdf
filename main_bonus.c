@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 02:13:14 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 02:13:34 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 02:45:32 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	close_window(void *param)
 
 int	key_hook(int key, t_map *map, void *param)
 {
-	//printf("%d\n", key); //AÑADIR MI FT_PRINTF A LIBFT Y UTILIZARLA AQUI!!!!???
-	
+	printf("%d\n", key); //AÑADIR MI FT_PRINTF A LIBFT Y UTILIZARLA AQUI!!!!???
+
 	if (key == 65307)
 		close_window(param);
 	else
@@ -56,6 +56,13 @@ int	key_hook(int key, t_map *map, void *param)
 			map->y_move += 10;
 		else if (key == 65363)
 			map->x_move += 10;
+		else if (key == 43)
+			map->zoom += 10;
+		else if (key == 45)
+		{
+			if (map->zoom > 10)
+				map->zoom -= 10;
+		}
 		mlx_clear_window(map->mlx_ptr, map->window_ptr);
 		draw_sequence(map);
 
@@ -91,13 +98,13 @@ int	main(int argc, char **argv)
 		return (2);
 	}
 	read_map(argv[1], map);
+	map->zoom = 20;
 	map->mlx_ptr = mlx_init();
 	map->window_ptr = mlx_new_window(map->mlx_ptr, 1000, 1000, "FDF");
 	draw_sequence(map);
 	mlx_key_hook(map->window_ptr, key_hook, map);
 	mlx_hook(map->window_ptr, 17, 1L << 17, close_window, map);
 	mlx_hook(map->window_ptr, 2, 0, close_window, map);
-	//mlx_loop_hook(map->mlx_ptr, loop_hook, map);
 	mlx_loop(map->mlx_ptr);
 	return (0);
 }
