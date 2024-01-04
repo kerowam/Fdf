@@ -6,11 +6,11 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 02:11:41 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 03:30:40 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:47:06 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	set_z_z1(t_map *map, float x, float y)
 {
@@ -35,4 +35,15 @@ void	set_x_y(int x, int y, t_map *map)
 {
 	map->x = (float)x;
 	map->y = (float)y;
+}
+
+void	set_parameters(t_map *map)
+{
+	map->x_move = 350;
+	map->y_move = 350;
+	map->zoom = 20;
+	map->angle_x = 1;
+	map->angle_y = 1;
+	map->z_mod = 1;
+	map->projection = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 22:45:27 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/03 22:47:57 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:45:17 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,11 @@ void	set_x_y(int x, int y, t_map *map)
 {
 	map->x = (float)x;
 	map->y = (float)y;
+}
+
+void	set_parameters(t_map *map)
+{
+	map->x_move = 350;
+	map->y_move = 350;
+	map->zoom = 20;
 }

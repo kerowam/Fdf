@@ -6,11 +6,11 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 02:12:00 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 17:14:46 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:46:56 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 float	select_abs_max(float a, float b)
 {

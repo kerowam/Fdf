@@ -6,11 +6,11 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 02:13:47 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 02:14:04 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:48:12 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 int	get_height(char *map_file, t_map *map)
 {

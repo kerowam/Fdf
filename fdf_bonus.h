@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/17 23:00:19 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 18:26:34 by gfredes-         ###   ########.fr       */
+/*   Created: 2024/01/04 17:38:35 by gfredes-          #+#    #+#             */
+/*   Updated: 2024/01/04 18:52:33 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FDF_BONUS_H
+# define FDF_BONUS_H
 
 # include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
@@ -56,6 +56,13 @@ void	set_z_z1(t_map *map, float x, float y);
 void	set_x1_y1(int x1, int y1, t_map *map);
 void	set_x_y(int x, int y, t_map *map);
 void	set_parameters(t_map *map);
-void	isometric_projection(float *x, float *y, int z);
+void	isometric_projection(float *x, float *y, int z, t_map *map);
+void	cavalier_projection(float *x, float *y, int z, t_map *map);
+void	select_projection(t_map	*map);
+void	move_map(int key, t_map *map);
+void	zoom_map(int key, t_map *map);
+void	rotate_map(int key, t_map *map);
+void	change_deep(int key, t_map *map);
+void	change_projection(t_map *map);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 02:14:15 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 02:14:42 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:48:01 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	set_color(t_map *map, char **z, int x, int y)
 {
