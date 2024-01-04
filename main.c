@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 02:40:48 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/03 23:46:32 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 02:30:24 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	close_window(void *param)
 int	key_hook(int key, t_map *map, void *param)
 {
 	//printf("%d\n", key); //AÑADIR MI FT_PRINTF A LIBFT Y UTILIZARLA AQUI!!!!???
-	
+
 	if (key == 65307)
 		close_window(param);
 	else

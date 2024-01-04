@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 02:13:14 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 02:45:32 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 03:33:46 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,18 @@ int	key_hook(int key, t_map *map, void *param)
 			if (map->zoom > 10)
 				map->zoom -= 10;
 		}
+		else if (key == 119)
+			map->angle_x += 0.2;
+		else if (key == 115)
+			map->angle_x -= 0.2;
+		else if (key == 97)
+			map->angle_y += 0.2;
+		else if (key == 100)
+			map->angle_y -= 0.2;
+		else if (key == 122)
+			map->z_mod -= 1;
+		else if (key == 120)
+			map->z_mod += 1;
 		mlx_clear_window(map->mlx_ptr, map->window_ptr);
 		draw_sequence(map);
 
@@ -79,6 +91,15 @@ int	key_hook(int key, t_map *map, void *param)
 	return (0);
 }*/
 
+void	set_parameters(t_map *map)
+{
+	map->x_move = 350;
+	map->y_move = 350;
+	map->zoom = 20;
+	map->angle_x = 1;
+	map->angle_y = 1;
+	map->z_mod = 1;
+}
 
 int	main(int argc, char **argv)
 {
@@ -98,7 +119,7 @@ int	main(int argc, char **argv)
 		return (2);
 	}
 	read_map(argv[1], map);
-	map->zoom = 20;
+	set_parameters(map);
 	map->mlx_ptr = mlx_init();
 	map->window_ptr = mlx_new_window(map->mlx_ptr, 1000, 1000, "FDF");
 	draw_sequence(map);

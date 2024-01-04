@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:00:19 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/03 23:02:47 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 03:22:20 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ typedef struct s_map
 	float	y1;
 	int		z;
 	int		z1;
+	float	angle_x;
+	float	angle_y;
+	int		z_mod;
 }			t_map;
 
 int		get_height(char *map_file, t_map *map);
