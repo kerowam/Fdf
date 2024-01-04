@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 02:14:15 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 17:48:01 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 19:37:21 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	make_map_line(int *z_y, char *line, t_map *map, int y)
 
 	z = ft_split(line, ' ');
 	x = 0;
-
 	while (z[x])
 	{
 		if (x < map->width)
@@ -56,7 +55,6 @@ void	init_z(t_map *map)
 	int	i;
 
 	i = 0;
-
 	map->z_values = (int **)malloc(sizeof(int *) * (map->height));
 	map->z_color = (int **)malloc(sizeof(int *) * (map->height));
 	if (!(map->z_values) || !(map->z_color))

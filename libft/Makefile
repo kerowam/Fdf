@@ -6,7 +6,7 @@
 #    By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/01 17:22:51 by gfredes-          #+#    #+#              #
-#    Updated: 2023/06/12 22:57:23 by gfredes-         ###   ########.fr        #
+#    Updated: 2024/01/04 19:16:24 by gfredes-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRC = 	ft_isalpha.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 		get_next_line.c \
+		get_next_line_utils.c
 
 SRCBONUS = ft_lstnew_bonus.c \
 		   ft_lstadd_front_bonus.c \

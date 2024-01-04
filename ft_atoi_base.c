@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 20:07:40 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/12/28 22:42:29 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/04 19:36:00 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ char	to_lower(char c)
 	return (c);
 }
 
-int get_digit(char c, int digits_in_base)
+int	get_digit(char c, int digits_in_base)
 {
-	int max_digit;
+	int	max_digit;
+
 	if (digits_in_base <= 10)
 		max_digit = digits_in_base + '0';
 	else
 		max_digit = digits_in_base - 10 + 'a';
-
 	if (c >= '0' && c <= '9' && c <= max_digit)
 		return (c - '0');
 	else if (c >= 'a' && c <= 'f' && c <= max_digit)
@@ -35,12 +35,33 @@ int get_digit(char c, int digits_in_base)
 		return (-1);
 }
 
-int ft_atoi_base(const char *str, int str_base)
+int	getting_digits(const char *str, int str_base, int sign)
 {
-	int result = 0;
-	int sign = 1;
-	int digit;
+	int	result;
+	int	digit;
 
+	result = 0;
+	while (1)
+	{
+		digit = get_digit(to_lower(*str), str_base);
+		if (digit >= 0)
+		{
+			result = result * str_base;
+			result = result + (digit * sign);
+			++str;
+		}
+		else
+			return (result);
+	}
+}
+
+int	ft_atoi_base(const char *str, int str_base)
+{
+	int	result;
+	int	sign;
+
+	result = 0;
+	sign = 1;
 	if (*str == ',')
 		++str;
 	if (*str == '0')
@@ -52,12 +73,6 @@ int ft_atoi_base(const char *str, int str_base)
 		sign = -1;
 		++str;
 	}
-
-	while ((digit = get_digit(to_lower(*str), str_base)) >= 0)
-	{
-		result = result * str_base;
-		result = result + (digit * sign);
-		++str;
-	}
+	result = getting_digits(str, str_base, sign);
 	return (result);
 }
