@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:48:34 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 19:36:41 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/20 23:00:40 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,20 @@ int	close_window(t_map *map)
 
 int	key_hook(int key, t_map *map)
 {
-	if (key == 65307)
+	printf("%d\n", key);
+	if (key == 53)
 		close_window(map);
 	else
 	{
-		if (key >= 65361 && key <= 65364)
+		if (key >= 123 && key <= 126)
 			move_map(key, map);
-		else if (key == 43 || key == 45)
+		else if (key == 30 || key == 44)
 			zoom_map (key, map);
-		else if (key == 119 || key == 115 || key == 97 || key == 100)
+		else if (key == 13 || (key >= 0 && key <= 2))
 			rotate_map(key, map);
-		else if (key == 122 || key == 120)
+		else if (key == 6 || key == 7)
 			change_deep(key, map);
-		else if (key == 112)
+		else if (key == 35)
 			change_projection(map);
 		mlx_clear_window(map->mlx_ptr, map->window_ptr);
 		draw_sequence(map);
@@ -40,10 +41,3 @@ int	key_hook(int key, t_map *map)
 	return (0);
 }
 
-/*int	loop_hook(int key, void *param)
-{
-	//t_map	*map;
-
-	(void)param;
-	return (0);
-}*/

@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 23:00:19 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 18:26:34 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/20 22:00:18 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FDF_H
 
 # include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
-# include "minilibx-linux/mlx_int.h"
+# include "minilibx_macos/mlx.h"
+//# include "minilibx_macos/mlx_int.h"
 # include <fcntl.h>
 # include <math.h>
 
@@ -57,5 +57,6 @@ void	set_x1_y1(int x1, int y1, t_map *map);
 void	set_x_y(int x, int y, t_map *map);
 void	set_parameters(t_map *map);
 void	isometric_projection(float *x, float *y, int z);
+int		deal_key(int key,void *map);
 
 #endif

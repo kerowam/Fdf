@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:38:35 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 18:52:33 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:13:43 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FDF_BONUS_H
 
 # include "libft/libft.h"
-# include "minilibx-linux/mlx.h"
-# include "minilibx-linux/mlx_int.h"
+# include "minilibx_macos/mlx.h"
+//# include "minilibx_macos/mlx_int.h"
 # include <fcntl.h>
 # include <math.h>
 

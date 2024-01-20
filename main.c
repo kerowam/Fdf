@@ -6,11 +6,16 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 02:40:48 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 17:46:16 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/20 23:02:39 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+/*void check_leaks(void)
+{
+	system("leaks fdf");
+}*/
 
 int	main(int argc, char **argv)
 {
@@ -35,8 +40,8 @@ int	main(int argc, char **argv)
 	map->window_ptr = mlx_new_window(map->mlx_ptr, 1000, 1000, "FDF");
 	draw_sequence(map);
 	mlx_key_hook(map->window_ptr, key_hook, map);
-	mlx_hook(map->window_ptr, 17, 1L << 17, close_window, map);
-	mlx_hook(map->window_ptr, 2, 0, close_window, map);
+	mlx_hook(map->window_ptr, 17, 0, close_window, map);
+	//atexit(check_leaks);
 	mlx_loop(map->mlx_ptr);
 	return (0);
 }

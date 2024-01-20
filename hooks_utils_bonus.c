@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:50:05 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 18:50:54 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/20 23:00:08 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	move_map(int key, t_map *map)
 {
-	if (key == 65362)
+	if (key == 126)
 		map->y_move -= 10;
-	else if (key == 65361)
+	else if (key == 123)
 		map->x_move -= 10;
-	else if (key == 65364)
+	else if (key == 125)
 		map->y_move += 10;
-	else if (key == 65363)
+	else if (key == 124)
 		map->x_move += 10;
 }
 
 void	zoom_map(int key, t_map *map)
 {
-	if (key == 43)
+	if (key == 30)
 		map->zoom += 10;
-	else if (key == 45)
+	else if (key == 44)
 	{
 		if (map->zoom > 10)
 			map->zoom -= 10;
@@ -37,21 +37,21 @@ void	zoom_map(int key, t_map *map)
 
 void	rotate_map(int key, t_map *map)
 {
-	if (key == 119)
+	if (key == 13)
 		map->angle_y -= 0.2;
-	else if (key == 115)
+	else if (key == 1)
 		map->angle_y += 0.2;
-	else if (key == 97)
+	else if (key == 0)
 		map->angle_x += 0.2;
-	else if (key == 100)
+	else if (key == 2)
 		map->angle_x -= 0.2;
 }
 
 void	change_deep(int key, t_map *map)
 {
-	if (key == 122)
+	if (key == 6)
 		map->z_mod -= 1;
-	else if (key == 120)
+	else if (key == 7)
 		map->z_mod += 1;
 }
 
