@@ -35,6 +35,7 @@ int	key_hook(int key, t_map *map)
 			map->x_move += 10;
 		mlx_clear_window(map->mlx_ptr, map->window_ptr);
 		draw_sequence(map);
+		mlx_put_image_to_window(map->mlx_ptr, map->window_ptr, map->image_ptr, 0, 0);
 	}
 	return (0);
 }
