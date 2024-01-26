@@ -63,5 +63,6 @@ void	set_x_y(int x, int y, t_map *map);
 void	set_parameters(t_map *map);
 void	isometric_projection(float *x, float *y, int z);
 int		deal_key(int key,void *map);
+void	set_pixel(t_map *map, int x, int y, int color);
 
 #endif
