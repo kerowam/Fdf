@@ -27,6 +27,11 @@ typedef struct s_map
 	int		**z_color;
 	void	*mlx_ptr;
 	void	*window_ptr;
+	void 	*image_ptr;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	int		zoom;
 	int		x_move;
 	int		y_move;
