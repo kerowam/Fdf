@@ -12,6 +12,25 @@
 
 #include "fdf.h"
 
+void	clear_image(t_map *map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (y < 1080)
+	{
+		while (x < 1920)
+		{
+			set_pixel(map, x, y, 0x000000);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+}
+
 int	close_window(t_map *map)
 {
 	mlx_destroy_window(map->mlx_ptr, map->window_ptr);
@@ -33,7 +52,7 @@ int	key_hook(int key, t_map *map)
 			map->y_move += 10;
 		else if (key == 65363)
 			map->x_move += 10;
-		mlx_clear_window(map->mlx_ptr, map->window_ptr);
+		clear_image(map);
 		draw_sequence(map);
 		mlx_put_image_to_window(map->mlx_ptr, map->window_ptr, map->image_ptr, 0, 0);
 	}
