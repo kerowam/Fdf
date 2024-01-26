@@ -43,3 +43,14 @@ void	set_parameters(t_map *map)
 	map->y_move = 350;
 	map->zoom = 20;
 }
+
+void	set_pixel(t_map *map, int x, int y, int color)
+{
+	char *dst;
+
+	if ((x >= 0 && x < 1920) && (y >= 0 && y < 1080))
+	{
+		dst = map->addr + (y * map->line_lenght + x * (map->bits_per_pixel / 8));
+		*(unsigned int*)dst = color;
+	}
+}

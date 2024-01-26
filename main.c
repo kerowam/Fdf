@@ -38,7 +38,11 @@ int	main(int argc, char **argv)
 	set_parameters(map);
 	map->mlx_ptr = mlx_init();
 	map->window_ptr = mlx_new_window(map->mlx_ptr, 1000, 1000, "FDF");
+	map->img_ptr = mlx_new_image(map->mlx_ptr, 1920, 1080);
+	map->addr = mlx_get_data_addr(map->img_ptr, &map->bits_per_pixel,
+								&map->line_lenght, &map->endian);
 	draw_sequence(map);
+	mlx_put_image_to_window(map->mlx_ptr, map->window_ptr, map->img_ptr, 0, 0);
 	mlx_key_hook(map->window_ptr, key_hook, map);
 	mlx_hook(map->window_ptr, 17, 0, close_window, map);
 	//atexit(check_leaks);
