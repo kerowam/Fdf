@@ -14,21 +14,21 @@
 
 void	move_map(int key, t_map *map)
 {
-	if (key == 126)
+	if (key == 65362)
 		map->y_move -= 10;
-	else if (key == 123)
+	else if (key == 65361)
 		map->x_move -= 10;
-	else if (key == 125)
+	else if (key == 65364)
 		map->y_move += 10;
-	else if (key == 124)
+	else if (key == 65363)
 		map->x_move += 10;
 }
 
 void	zoom_map(int key, t_map *map)
 {
-	if (key == 30)
+	if (key == 43)
 		map->zoom += 10;
-	else if (key == 44)
+	else if (key == 45)
 	{
 		if (map->zoom > 10)
 			map->zoom -= 10;
@@ -37,21 +37,21 @@ void	zoom_map(int key, t_map *map)
 
 void	rotate_map(int key, t_map *map)
 {
-	if (key == 13)
+	if (key == 119)
 		map->angle_y -= 0.2;
-	else if (key == 1)
+	else if (key == 115)
 		map->angle_y += 0.2;
-	else if (key == 0)
+	else if (key == 97)
 		map->angle_x += 0.2;
-	else if (key == 2)
+	else if (key == 100)
 		map->angle_x -= 0.2;
 }
 
 void	change_deep(int key, t_map *map)
 {
-	if (key == 6)
+	if (key == 122)
 		map->z_mod -= 1;
-	else if (key == 7)
+	else if (key == 120)
 		map->z_mod += 1;
 }
 

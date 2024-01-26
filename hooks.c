@@ -21,17 +21,17 @@ int	close_window(t_map *map)
 int	key_hook(int key, t_map *map)
 {
 	(void)map;
-	if (key == 53)
+	if (key == 65307)
 		close_window(map);
 	else
 	{
-		if (key == 126)
+		if (key == 65362)
 			map->y_move -= 10;
-		else if (key == 123)
+		else if (key == 65361)
 			map->x_move -= 10;
-		else if (key == 125)
+		else if (key == 65364)
 			map->y_move += 10;
-		else if (key == 124)
+		else if (key == 65363)
 			map->x_move += 10;
 		mlx_clear_window(map->mlx_ptr, map->window_ptr);
 		draw_sequence(map);

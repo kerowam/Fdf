@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/03 23:20:55 by gfredes-          #+#    #+#              #
-#    Updated: 2024/01/17 17:18:20 by gfredes-         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = fdf
 
 BONUS = fdf_bonus
@@ -44,7 +32,7 @@ OBJT_BONUS = $(SRC_BONUS:.c=.o)
 
 LIBFT = libft/libft.a
 
-MINILIBX = minilibx_macos/libmlx.a
+MINILIBX = minilibx-linux/libmlx.a
 
 all: $(LIBFT) $(MINILIBX) $(NAME)
 
@@ -52,30 +40,30 @@ $(LIBFT):
 	make -C ./libft
 
 $(MINILIBX):
-	make -C ./minilibx_macos
+	make -C ./minilibx-linux
 
-#$(NAME): $(LIBFT) $(MINILIBX) $(OBJT)
-#	$(CC) $(CFLAGS) $(SRC) $(MINILIBX) $(LIBFT) -lGL -lX11 -lXext -lm -o $(NAME)
+$(NAME): $(LIBFT) $(MINILIBX) $(OBJT)
+	$(CC) $(CFLAGS) $(SRC) $(MINILIBX) $(LIBFT) -lGL -lX11 -lXext -lm -o $(NAME)
 
 # For Mac
 
-$(NAME): $(LIBFT) $(MINILIBX) $(OBJT)
-	$(CC) $(CFLAGS) $(SRC) $(MINILIBX) $(LIBFT) -framework OpenGL -framework AppKit -o $(NAME)
+#$(NAME): $(LIBFT) $(MINILIBX) $(OBJT)
+#	$(CC) $(CFLAGS) $(SRC) $(MINILIBX) $(LIBFT) -framework OpenGL -framework AppKit -o $(NAME)
 
 bonus: $(BONUS)
 
-#$(BONUS): $(LIBFT) $(MINILIBX) $(OBJT_BONUS)
-#s	$(CC) $(CFLAGS) $(SRC_BONUS) $(MINILIBX) $(LIBFT) -lGL -lX11 -lXext -lm -o $(BONUS)
+$(BONUS): $(LIBFT) $(MINILIBX) $(OBJT_BONUS)
+	$(CC) $(CFLAGS) $(SRC_BONUS) $(MINILIBX) $(LIBFT) -lGL -lX11 -lXext -lm -o $(BONUS)
 
 # For Mac
 
-$(BONUS): $(LIBFT) $(MINILIBX) $(OBJT_BONUS)
-	$(CC) $(CFLAGS) $(SRC_BONUS) $(MINILIBX) $(LIBFT) -framework OpenGL -framework AppKit -o $(BONUS)
+#$(BONUS): $(LIBFT) $(MINILIBX) $(OBJT_BONUS)
+#	$(CC) $(CFLAGS) $(SRC_BONUS) $(MINILIBX) $(LIBFT) -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
 	$(CLEAN) $(OBJT) $(OBJT_BONUS)
 	make -C ./libft clean
-	make -C ./minilibx_macos clean
+	make -C ./minilibx-linux clean
 
 fclean: clean
 	$(CLEAN) $(NAME) $(BONUS)

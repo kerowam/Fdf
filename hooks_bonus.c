@@ -25,15 +25,15 @@ int	key_hook(int key, t_map *map)
 		close_window(map);
 	else
 	{
-		if (key >= 123 && key <= 126)
+		if (key >= 65361 && key <= 65364)
 			move_map(key, map);
-		else if (key == 30 || key == 44)
+		else if (key == 43 || key == 45)
 			zoom_map (key, map);
-		else if (key == 13 || (key >= 0 && key <= 2))
+		else if (key == 119 || key == 115 || key == 97 || key == 100)
 			rotate_map(key, map);
-		else if (key == 6 || key == 7)
+		else if (key == 122 || key == 120)
 			change_deep(key, map);
-		else if (key == 35)
+		else if (key == 112)
 			change_projection(map);
 		mlx_clear_window(map->mlx_ptr, map->window_ptr);
 		draw_sequence(map);
