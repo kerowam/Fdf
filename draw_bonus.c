@@ -56,7 +56,7 @@ void	draw_line(float x, float y, t_map *map)
 	y_dist /= max_dist;
 	while ((int)(map->x - map->x1) || (int)(map->y - map->y1))
 	{
-		mlx_pixel_put(map->mlx_ptr, map->window_ptr, map->x, map->y, color);
+		set_pixel(map, map->x, map->y, color);
 		map->x += x_dist;
 		map->y += y_dist;
 	}

@@ -27,6 +27,11 @@ typedef struct s_map
 	int		**z_color;
 	void	*mlx_ptr;
 	void	*window_ptr;
+	void	*image_ptr;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	int		zoom;
 	int		x_move;
 	int		y_move;
@@ -64,5 +69,6 @@ void	zoom_map(int key, t_map *map);
 void	rotate_map(int key, t_map *map);
 void	change_deep(int key, t_map *map);
 void	change_projection(t_map *map);
+void 	set_pixel(t_map *map, int x, int y, int color);
 
 #endif
