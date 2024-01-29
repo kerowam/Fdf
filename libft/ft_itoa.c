@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfredes- <gfredes-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 19:54:16 by gfredes-          #+#    #+#             */
-/*   Updated: 2022/12/23 22:52:26 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:21:06 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static size_t	ft_numlen(long n)
 
 	len = 0;
 	if (n == 0)
-	{	
+	{
 		len++;
 		return (len);
 	}
@@ -50,7 +50,7 @@ char	*ft_itoa(int n)
 	if (ln == 0)
 		str[0] = '0';
 	if (ln < 0)
-	{	
+	{
 		str[0] = '-';
 		ln = ln * -1;
 	}

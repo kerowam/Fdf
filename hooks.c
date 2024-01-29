@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:34:22 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/20 22:49:09 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:20:54 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int	key_hook(int key, t_map *map)
 			map->x_move += 10;
 		clear_image(map);
 		draw_sequence(map);
-		mlx_put_image_to_window(map->mlx_ptr, map->window_ptr, map->img_ptr, 0, 0);
+		mlx_put_image_to_window(map->mlx_ptr, map->window_ptr,
+			map->img_ptr, 0, 0);
 	}
 	return (0);
 }

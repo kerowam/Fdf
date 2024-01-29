@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 02:11:41 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 17:47:06 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:12:33 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,14 @@ void	set_parameters(t_map *map)
 	map->projection = 0;
 }
 
-void set_pixel(t_map *map, int x, int y, int color)
+void	set_pixel(t_map *map, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
+
 	if ((x >= 0 && x < 1920) && (y >= 0 && y < 1080))
 	{
-		dst = map->addr + (y * map->line_length + x * (map->bits_per_pixel / 8));
+		dst = map->addr + (y * map->line_length + x
+				* (map->bits_per_pixel / 8));
 		*(unsigned int *)dst = color;
 	}
 }

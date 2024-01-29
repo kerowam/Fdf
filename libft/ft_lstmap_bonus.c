@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfredes- <gfredes-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 20:11:52 by gfredes-          #+#    #+#             */
-/*   Updated: 2022/12/30 21:11:08 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:22:07 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	{
 		newlst = ft_lstnew(f(lst->content));
 		if (!newlst)
-		{	
+		{
 			ft_lstclear(&mapedlst, del);
 			return (0);
 		}

@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 22:45:27 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/04 17:45:17 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:22:21 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ void	set_parameters(t_map *map)
 
 void	set_pixel(t_map *map, int x, int y, int color)
 {
-	char *dst;
+	char	*dst;
 
 	if ((x >= 0 && x < 1920) && (y >= 0 && y < 1080))
 	{
-		dst = map->addr + (y * map->line_lenght + x * (map->bits_per_pixel / 8));
-		*(unsigned int*)dst = color;
+		dst = map->addr + (y * map->line_lenght + x
+				* (map->bits_per_pixel / 8));
+		*(unsigned int *) dst = color;
 	}
 }

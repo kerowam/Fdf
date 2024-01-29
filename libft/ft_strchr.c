@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfredes- <gfredes-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 23:54:58 by gfredes-          #+#    #+#             */
-/*   Updated: 2022/12/09 00:13:43 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:25:11 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strchr(char *s, int c)
 
 	count = 0;
 	if ((char) c == '\0')
-	{	
+	{
 		while (s[count] != '\0')
 			count++;
 		return ((char *)&s[count]);

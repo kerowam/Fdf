@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfredes- <gfredes-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:38:15 by gfredes-          #+#    #+#             */
-/*   Updated: 2022/12/24 13:52:58 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:25:33 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	{
 		f (i, &s[i]);
 		i++;
-	}	
+	}
 	s[i] = '\0';
 }

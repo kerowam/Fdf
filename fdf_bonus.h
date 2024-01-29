@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:38:35 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/17 17:13:43 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:15:09 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "libft/libft.h"
 # include "minilibx_macos/mlx.h"
-//# include "minilibx_macos/mlx_int.h"
 # include <fcntl.h>
 # include <math.h>
 
@@ -69,6 +68,6 @@ void	zoom_map(int key, t_map *map);
 void	rotate_map(int key, t_map *map);
 void	change_deep(int key, t_map *map);
 void	change_projection(t_map *map);
-void 	set_pixel(t_map *map, int x, int y, int color);
+void	set_pixel(t_map *map, int x, int y, int color);
 
 #endif

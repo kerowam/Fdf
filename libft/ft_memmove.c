@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfredes- <gfredes-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 01:58:10 by gfredes-          #+#    #+#             */
-/*   Updated: 2022/12/08 02:23:22 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:22:38 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*ft_memmove(void *dest, const void *sorc, size_t len)
 	if (dest > sorc)
 	{
 		while (len-- > 0)
-		{	
+		{
 			dst[len] = src[len];
 		}
 	}

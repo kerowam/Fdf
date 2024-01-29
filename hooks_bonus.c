@@ -6,16 +6,16 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:48:34 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/20 23:00:40 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 19:20:17 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-void clear_image(t_map *map)
+void	clear_image(t_map *map)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -56,8 +56,8 @@ int	key_hook(int key, t_map *map)
 			change_projection(map);
 		clear_image(map);
 		draw_sequence(map);
-		mlx_put_image_to_window(map->mlx_ptr, map->window_ptr, map->image_ptr, 0, 0);
+		mlx_put_image_to_window(map->mlx_ptr, map->window_ptr,
+			map->image_ptr, 0, 0);
 	}
 	return (0);
 }
-

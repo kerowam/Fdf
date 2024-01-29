@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfredes- <gfredes-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 13:56:06 by gfredes-          #+#    #+#             */
-/*   Updated: 2022/12/13 14:13:03 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:25:26 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strdup(const char *s1)
 	{
 		ptr[i] = s1[i];
 		i++;
-	}	
+	}
 	ptr[i] = '\0';
 	return (ptr);
 }

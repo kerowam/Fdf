@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:20:22 by gfredes-          #+#    #+#             */
-/*   Updated: 2023/08/27 18:04:50 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/29 18:25:43 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,4 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	}
 	str[i] = '\0';
 	return (str);
-}		
+}
