@@ -6,7 +6,7 @@
 /*   By: gfredes- <gfredes-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 18:50:05 by gfredes-          #+#    #+#             */
-/*   Updated: 2024/01/29 20:31:18 by gfredes-         ###   ########.fr       */
+/*   Updated: 2024/01/31 14:02:36 by gfredes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,18 @@ void	move_map(int key, t_map *map)
 void	zoom_map(int key, t_map *map)
 {
 	if (key == 30)
-		map->zoom += 10;
+	{
+		if (map->zoom < 11)
+			map->zoom += 1;
+		else if (map->zoom > 10 && map->zoom < 100)
+			map->zoom += 5;
+	}
 	else if (key == 44)
 	{
 		if (map->zoom > 10)
-			map->zoom -= 10;
+			map->zoom -= 5;
+		else if (map->zoom < 11 && map->zoom > 1)
+			map->zoom -= 1;
 	}
 }
 
